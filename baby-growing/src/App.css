@@ -1,0 +1,119 @@
+nav{
+  background-color: #D0C9C0;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0;
+}
+.navbar{
+  color:#5F7161;
+  padding: 10px 50px;
+  font-size: 25px;
+  text-decoration: none;
+  font-family: 'Peralta', cursive;
+}
+
+body{
+  background-image: url("fon.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  font-family: 'Peralta', cursive;
+}
+h1{
+  font-size: 70px;
+  color:#EFEAD8;
+  text-align: center;
+}
+.button{
+  display: flex;
+  justify-content:center;
+}
+.btn{
+  background-color: #D0C9C0;
+  text-align: center;
+  color:#5F7161;
+  padding: 40px;
+  margin: 20px;
+  font-size: 30px;
+  border-radius: 25px;
+  border: none;
+  width: 30%;
+  font-family: 'Peralta', cursive;
+  box-shadow: 10px 10px 10px #5F7161;
+}
+.babyimg{
+  border-radius: 10px;
+  width: 300px;
+  height: 400px;
+}
+.babyClothes{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  
+}
+.babyStaff{
+  border-radius: 10px;
+  width: 300px;
+  margin:20px;
+  background-color: #d0c9c0b0;
+  padding: 10px;
+  text-align: center;
+}
+p{
+  color:#3e4c40;
+  font-size: 23px;
+}
+.babyBtn{
+  padding: 10px;
+  font-size: 20px;
+  font-family: 'Peralta', cursive;
+  border-radius: 10px;
+  border: none;
+  background-color: #EFEAD8;
+}
+.babyButtons{
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+.babyBtn2{
+  padding: 20px;
+  margin: 20px;
+  background-color: #6D8B74;
+  font-family: 'Peralta', cursive;
+  font-size: 25px;
+  color: #EFEAD8;
+  border-radius: 10px;
+  border: none;
+}
+
+.promo{
+  text-align: center;
+  width: 50%;
+  background-color: #d0c9c0c3;
+  color:#5F7161;
+  padding: 40px;
+  margin: 20px;
+  font-size: 35px;
+  border-radius: 25px;
+  border: none;
+  font-family: 'Peralta', cursive;
+  box-shadow: 10px 10px 10px #5F7161;
+
+}
+.home{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.h3{
+  font-size: 45px;
+  color:#3e4c40;
+}
+.homeP{
+  font-size: 35px;
+  color:#5F7161;
+}
