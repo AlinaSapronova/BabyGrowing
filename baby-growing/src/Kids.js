@@ -1,6 +1,7 @@
 import { useState } from "react";
 import KidsButtons from "./KidsButtons";
 import { kids } from "./data";
+import KidsSlides from "./KidsSlides";
 
 function Kids(){
     const [kidsClothes, setKidsClothes] = useState(kids);
@@ -9,22 +10,37 @@ function Kids(){
         const newGender = kids.filter(item => item.gender === gender)
         setKidsClothes(newGender)
     }
+    const descriptionKids=(id)=>{
+        const newClothes = []
+        kidsClothes.forEach(item=>{
+            if(item.id ===id){
+                const chenchedId ={...item, showMore: !item.showMore};
+                newClothes.push(chenchedId)
+            }else{
+                newClothes.push(item)
+            }
+        })
+        setKidsClothes(newClothes)
+    }
 
 
 return(
         <div className="">
             <div>
                 <KidsButtons chosenGender={chosenGender}/>
+                <p className="footnote">All pictures and information are taken from the H&M website</p>
             </div>
             <div className="babyClothes">
             {kidsClothes.map(item => {
-                const{name, image, price} = item;
+                const{id,name, price,details,showMore} = item;
                 return(
-                    <div className="babyStaff">
-                        <img src={image} alt="baby clothes" className="babyimg"/>
+                    <div className="babyStaff" key={id}>
+                        <KidsSlides numberItem={id}/>
                         <p>{name}</p>
                         <p>Price: ${price}</p>
-                        <button className="babyBtn">More details</button>
+                        <p>{showMore ? details : details.substring(0, 30) + "... "}
+                        <button className="showMore" onClick={() => descriptionKids(id)}> {showMore ? "Less details" : "More details" }</button></p>
+                        
                     </div>
                     
                 )

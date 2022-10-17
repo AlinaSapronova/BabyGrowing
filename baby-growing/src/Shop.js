@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { baby, kids, toddler } from "./data";
+import BabySlides from "./BabySlides";
+import ToddlerSlides from "./ToddlerSlides";
+import KidsSlides from "./KidsSlides";
 
 function Shop(){
-    const [babyClothes] = useState(baby);
-    const [toddlerClothes] = useState(toddler);
-    const [kidsClothes] = useState(kids);
+    const [babyClothes,setBabyClothes] = useState(baby);
+    const [toddlerClothes, setToddlerClothes] = useState(toddler);
+    const [kidsClothes,setKidsClothes] = useState(kids);
 
     const navigate = useNavigate()
     function moveToBaby(e) {
@@ -21,6 +24,45 @@ function Shop(){
         navigate("./Kids")
     }
 
+    const description=(id)=>{
+        const newClothes = []
+        babyClothes.forEach(item=>{
+            if(item.id ===id){
+                const chenchedId ={...item, showMore: !item.showMore};
+                newClothes.push(chenchedId)
+            }else{
+                newClothes.push(item)
+            }
+        })
+        setBabyClothes(newClothes)
+    }
+
+    const descriptionToddler=(id)=>{
+        const newClothes = []
+        toddlerClothes.forEach(item=>{
+            if(item.id ===id){
+                const chenchedId ={...item, showMore: !item.showMore};
+                newClothes.push(chenchedId)
+            }else{
+                newClothes.push(item)
+            }
+        })
+        setToddlerClothes(newClothes)
+    }
+
+    const descriptionKids=(id)=>{
+        const newClothes = []
+        kidsClothes.forEach(item=>{
+            if(item.id ===id){
+                const chenchedId ={...item, showMore: !item.showMore};
+                newClothes.push(chenchedId)
+            }else{
+                newClothes.push(item)
+            }
+        })
+        setKidsClothes(newClothes)
+    }
+
 
 
 
@@ -34,41 +76,51 @@ return(
     <button className="btn" onClick={moveToToddler}>Toddler</button>
     <button className="btn" onClick={moveToKids}>Kids</button>
     </div>
+
 </div>
 
             <div className="babyClothes">
             {babyClothes.map(item => {
-                const{name, image, price} = item;
+                const{id,details, name, price,showMore} = item;
                 return(
-                    <div className="babyStaff">
-                        <img src={image} alt="baby clothes" className="babyimg"/>
+                    <div className="babyStaff" key={id}>
+                        <BabySlides numberItem={id}/>
+                        <p className="footnote">All pictures and information are taken from the H&M website</p>
                         <p>{name}</p>
                         <p>Price: ${price}</p>
-                        <button className="babyBtn">More details</button>
+                        <p>{showMore ? details : details.substring(0, 30) + "... "}
+                        <button className="showMore" onClick={() => description(id)}> {showMore ? "Less details" : "More details" }</button></p>
+                        
                     </div>
                     
                 )
             })},
             {toddlerClothes.map(item => {
-                const{name, image, price} = item;
+                const{id,details, name, price, showMore} = item;
                 return(
-                    <div className="babyStaff">
-                        <img src={image} alt="baby clothes" className="babyimg"/>
+                    <div className="babyStaff" key={id}>
+                        <ToddlerSlides numberItem={id}/>
+                        <p className="footnote">All pictures and information are taken from the H&M website</p>
                         <p>{name}</p>
                         <p>Price: ${price}</p>
-                        <button className="babyBtn">More details</button>
+                        <p>{showMore ? details : details.substring(0, 30) + "... "}
+                        <button className="showMore" onClick={() => descriptionToddler(id)}> {showMore ? "Less details" : "More details" }</button></p>
+                        
                     </div>
                     
                 )
             })},
               {kidsClothes.map(item => {
-                const{name, image, price} = item;
+                const{id,details, name,  price, showMore} = item;
                 return(
-                    <div className="babyStaff">
-                        <img src={image} alt="baby clothes" className="babyimg"/>
+                    <div className="babyStaff" key={id}>
+                       <KidsSlides numberItem={id}/>
+                       <p className="footnote">All pictures and information are taken from the H&M website</p>
                         <p>{name}</p>
                         <p>Price: ${price}</p>
-                        <button className="babyBtn">More details</button>
+                        <p>{showMore ? details : details.substring(0, 30) + "... "}
+                        <button className="showMore" onClick={() => descriptionKids(id)}> {showMore ? "Less details" : "More details" }</button></p>
+                        
                     </div>
                     
                 )
